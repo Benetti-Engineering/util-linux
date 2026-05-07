@@ -20,6 +20,7 @@ TS_DESC="zero-range"
 . "$TS_TOPDIR"/functions.sh
 ts_init "$*"
 ts_skip_nonroot
+[ -w /proc/sys/vm/drop_caches ] || ts_skip "/proc/sys/vm/drop_caches not writable"
 
 ts_check_test_command "$TS_CMD_FALLOCATE"
 ts_check_test_command "$TS_CMD_FINDMNT"
